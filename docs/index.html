@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code&display=swap" rel="stylesheet">
+    
+    <!-- MathJax for LaTeX rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <canvas id="networkCanvas"></canvas>
@@ -65,14 +69,17 @@
             <h2>Spectral Cymatics</h2>
             <p>MoReNet replaces linear algebra layers with the Graph Wave Equation:</p>
             <div class="code-block">
-                ∂²Ψ / ∂t² + c² L Ψ = 0
+                $$ \frac{\partial^2 \Psi}{\partial t^2} + c^2 \mathcal{L}\Psi = 0 $$
             </div>
-            <p>We bypass the expensive O(|V|³) eigenvalue decomposition using <strong>Chebyshev Polynomials</strong> scaled by <strong>Bessel functions of the first kind (J_n)</strong>, ensuring the semantic soliton focuses laser-sharp energy.</p>
+            <p>We bypass the expensive O(|V|³) eigenvalue decomposition using <strong>Chebyshev Polynomials</strong> scaled by <strong>Bessel functions of the first kind (J_n)</strong>, ensuring the semantic soliton focuses laser-sharp energy:</p>
+            <div class="code-block">
+                $$ \cos(\sqrt{\lambda} \cdot t) \approx J_0(t) + 2 \sum_{n=1}^{K} (-1)^n J_{2n}(t) T_{2n}(\hat{\mathcal{L}}) $$
+            </div>
             
             <h3>Topological Erosion</h3>
             <p>Learning is Hebbian plasticity driven by wave interference:</p>
             <div class="code-block">
-                ∂W_ij / ∂t = α · Θ(|Ψ_in| · |Ψ_target| - plasticity)
+                $$ \frac{\partial W_{ij}}{\partial t} = \alpha \cdot \Theta(|\Psi_{tot,i}| \cdot |\Psi_{tot,j}| - \text{plasticity}) $$
             </div>
         </section>
         
