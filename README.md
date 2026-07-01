@@ -3,6 +3,7 @@
   <h3>Spectral Morphogenetic Resonance Networks</h3>
   <p><b>Zero-Backprop. <i>O(|E|)</i> Complexity. Zero-Catastrophic Forgetting.</b></p>
   <p><i>The Post-Connectionist Era of Artificial Intelligence begins here.</i></p>
+  <p>🌍 <b><a href="https://GabrieleDattile.github.io/morenet-core">Visita il Sito Web Interattivo / Documentazione</a></b></p>
 </div>
 
 ---
