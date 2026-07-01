@@ -3,112 +3,112 @@
   <h3>Spectral Morphogenetic Resonance Networks</h3>
   <p><b>Zero-Backprop. <i>O(|E|)</i> Complexity. Zero-Catastrophic Forgetting.</b></p>
   <p><i>The Post-Connectionist Era of Artificial Intelligence begins here.</i></p>
-  <p>🌍 <b><a href="https://GabrieleDattile.github.io/morenet-core">Visita il Sito Web Interattivo / Documentazione</a></b></p>
+  <p>🌍 <b><a href="https://GabrieleDattile.github.io/morenet-core">Visit the Interactive Website / Documentation</a></b></p>
 </div>
 
 ---
 
-## ⚡ 1. The Paradigm Shift: Perché il Deep Learning sta morendo
+## ⚡ 1. The Paradigm Shift: Why Deep Learning is Stagnating
 
-L'ecosistema dell'AI moderna (basato su Transformer, architetture dense e Discesa del Gradiente) sta per schiantarsi contro un muro termodinamico e algoritmico. **MoReNet** decostruisce e risolve tre dei più grandi paradossi del Deep Learning connessionista:
+The modern AI ecosystem (based on Transformers, dense architectures, and Gradient Descent) is about to hit a thermodynamic and algorithmic wall. **MoReNet** deconstructs and solves three of the biggest paradoxes of connectionist Deep Learning:
 
-1. **Il Vicolo Cieco Termodinamico della Backpropagation:** Calcolare gradienti globali per ogni minimo aggiornamento dei pesi richiede energia esorbitante. In MoReNet, **non ci sono matrici dense né derivate parziali**. Il calcolo è un'operazione puramente fisica di propagazione d'onda che scala linearmente con la sparsità del grafo $O(|E|)$.
-2. **L'Oblio Catastrofico:** Nel Deep Learning, imparare il "Task B" sovrascrive i pesi del "Task A", distruggendone la memoria. MoReNet apprende tramite l'**Erosione Topologica** locale: nuovi concetti trovano frequenze libere (armoniche) nel grafo, lasciando intatti i "canyon" di memoria dei concetti passati.
-3. **Memoria e Calcolo Disaccoppiati:** Nei Transformer, il calcolo e i pesi sono entità matematiche distinte. In MoReNet, la topologia geometrica del grafo è al tempo stesso il substrato di calcolo (l'onda che viaggia) e il database della memoria (i canyon scavati nel Laplaciano).
+1. **The Thermodynamic Dead-End of Backpropagation:** Calculating global gradients for every minor weight update requires exorbitant energy. In MoReNet, **there are no dense matrices or partial derivatives**. Computation is a purely physical wave propagation process that scales linearly with graph sparsity $O(|E|)$.
+2. **Catastrophic Forgetting:** In standard Deep Learning, learning "Task B" overwrites the weights of "Task A", destroying its memory. MoReNet learns through local **Topological Erosion**: new concepts find available frequencies (harmonics) in the graph, leaving the memory "canyons" of past concepts entirely intact.
+3. **Decoupled Memory and Compute:** In Transformers, computation and weights are distinct mathematical entities. In MoReNet, the geometric topology of the graph is simultaneously the compute substrate (the traveling wave) and the memory database (the canyons carved into the Laplacian).
 
 ---
 
-## 📐 2. Dimostrazione di Matematica Spettrale (The Core Equations)
+## 📐 2. Spectral Mathematics Proof (The Core Equations)
 
-Invece di moltiplicare matrici per l'estrazione di features, MoReNet sfrutta l'interferenza costruttiva delle funzioni d'onda su **Grafi Non Euclidei**.
+Instead of multiplying matrices for feature extraction, MoReNet leverages the constructive interference of wave functions on **Non-Euclidean Graphs**.
 
-### A. L'Equazione d'Onda su Grafo
-Il segnale non viaggia in layer sequenziali, ma si propaga come un'onda differenziale sulla matrice Laplaciana $\mathcal{L} = D - W$ (dove $D$ è la matrice dei gradi e $W$ è l'adiacenza pesata):
+### A. The Graph Wave Equation
+The signal does not travel in sequential layers, but propagates as a differential wave on the Laplacian matrix $\mathcal{L} = D - W$ (where $D$ is the degree matrix and $W$ is the weighted adjacency):
 $$ \frac{\partial^2 \Psi}{\partial t^2} + c^2 \mathcal{L}\Psi = 0 $$
 
-### B. Il Solitono Semantico (Espansione Analitica di Chebyshev & Bessel)
-Per propagare l'onda senza calcolare la complessa decomposizione degli autovettori $O(|V|^3)$, approssimiamo l'operatore di evoluzione temporale $\cos(\sqrt{\lambda} \cdot t)$. A differenza delle espansioni di Chebyshev classiche che causano dispersione caotica, calcoliamo analiticamente i coefficienti usando le **Funzioni di Bessel di primo tipo ($J_n$)**, creando un *Solitono Semantico* a perfetta focalizzazione laser:
+### B. The Semantic Soliton (Chebyshev & Bessel Analytical Expansion)
+To propagate the wave without calculating the complex $O(|V|^3)$ eigenvector decomposition, we approximate the time evolution operator $\cos(\sqrt{\lambda} \cdot t)$. Unlike classical Chebyshev expansions that cause chaotic dispersion, we analytically compute the coefficients using **Bessel Functions of the first kind ($J_n$)**, creating a laser-focused *Semantic Soliton*:
 $$ \cos(\sqrt{\lambda} \cdot t) \approx J_0(t) + 2 \sum_{n=1}^{K} (-1)^n J_{2n}(t) T_{2n}(\hat{\mathcal{L}}) $$
 
-### C. La Plasticità Hebbiana Spettrale (L'Apprendimento)
-Dove l'onda sensoriale ($\Psi_{in}$) e la contro-onda target ($\Psi_{target}$) subiscono interferenza costruttiva, l'alta energia erode la topologia abbassando la resistenza dell'arco (scava il "canyon semantico"):
+### C. Spectral Hebbian Plasticity (Learning)
+Where the sensory wave ($\Psi_{in}$) and the target counter-wave ($\Psi_{target}$) undergo constructive interference, the high energy erodes the topology by lowering the edge resistance (carving the "semantic canyon"):
 $$ \frac{\partial W_{ij}}{\partial t} = \alpha \cdot \Theta(|\Psi_{tot,i}| \cdot |\Psi_{tot,j}| - \text{plasticity}) $$
-*(Dove $\Theta$ è la funzione a gradino di Heaviside).*
+*(Where $\Theta$ is the Heaviside step function).*
 
 ---
 
-## 🚀 3. Quickstart: Il "One-Line Demo" (Esperimento Zero)
+## 🚀 3. Quickstart: The "One-Line Demo" (Experiment Zero)
 
-Vuoi vedere la topologia evolvere davanti ai tuoi occhi? Ecco uno script PyTorch autonomo, senza dipendenze esterne, per testare l'erosione topologica.
+Want to see topology evolve right before your eyes? Here is a standalone PyTorch script, with no external dependencies, to test topological erosion.
 
 ```python
 import torch
 
-# 1. Inizializzazione Grafo Small-World (100 nodi)
+# 1. Initialize Small-World Graph (100 nodes)
 num_nodes = 100
 W = torch.rand((num_nodes, num_nodes)) * 0.05
-W = (W + W.T) / 2 # Rende il grafo simmetrico
+W = (W + W.T) / 2 # Make graph symmetric
 W.fill_diagonal_(0.0)
 
-# Laplaciano L = D - W
+# Laplacian L = D - W
 L = torch.diag(W.sum(dim=1)) - W
 
-# 2. Stimolo Sensoriale e Contro-Onda Target
-wave_in = torch.zeros(num_nodes); wave_in[10] = 1.0  # Nodo Sensoriale
-wave_target = torch.zeros(num_nodes); wave_target[90] = 1.0 # Nodo Attuatore
+# 2. Sensory Stimulus and Target Counter-Wave
+wave_in = torch.zeros(num_nodes); wave_in[10] = 1.0  # Sensor Node
+wave_target = torch.zeros(num_nodes); wave_target[90] = 1.0 # Actuator Node
 
-# 3. Propagazione Spettrale (Approssimazione polinomiale toy K=2)
+# 3. Spectral Propagation (Toy K=2 Polynomial Approximation)
 wave_tot = wave_in + wave_target
 L_scaled = L / (L.max() + 1e-8)
 wave_propagated = wave_tot - 0.5 * torch.matmul(L_scaled, wave_tot)
 
-# 4. Erosione Topologica Spettrale (Apprendimento Zero-Backprop)
+# 4. Spectral Topological Erosion (Zero-Backprop Learning)
 energy = torch.outer(torch.abs(wave_propagated), torch.abs(wave_propagated))
 plasticity_threshold, alpha = 0.1, 0.05
 
-# Aggiornamento Hebbiano
+# Hebbian Update
 erosion_mask = (energy > plasticity_threshold).float()
 delta_W = alpha * (energy - plasticity_threshold) * erosion_mask
 
-print(f"Prima del Training -> W_mean: {W.mean():.6f}, W_max: {W.max():.6f}")
+print(f"Before Training -> W_mean: {W.mean():.6f}, W_max: {W.max():.6f}")
 
 W_new = torch.clamp(W + delta_W, max=1.0)
 W_new.fill_diagonal_(0.0)
 
-print(f"Dopo il Training   -> W_mean: {W_new.mean():.6f}, W_max: {W_new.max():.6f}")
-print("RISULTATO: W_max è aumentato drasticamente (Canyon scavato).")
-print("W_mean è stabile (Nessuna sovrascrittura globale: Zero Oblio Catastrofico).")
+print(f"After Training  -> W_mean: {W_new.mean():.6f}, W_max: {W_new.max():.6f}")
+print("RESULT: W_max increased drastically (Canyon carved).")
+print("W_mean is stable (No global overwriting: Zero Catastrophic Forgetting).")
 ```
 
 ---
 
-## 📊 4. Benchmark: Immunità all'Oblio Catastrofico
+## 📊 4. Benchmark: Immunity to Catastrophic Forgetting
 
-Abbiamo validato MoReNet sul dataset **Split-MNIST**. Le reti neurali standard con Backpropagation falliscono in questo compito, dimenticando il Task 1 quando imparano il Task 2 (l'accuratezza sul Task 1 crolla a ~0%).
+We validated MoReNet on the **Split-MNIST** dataset. Standard neural networks with Backpropagation fail at this task, forgetting Task 1 when they learn Task 2 (accuracy on Task 1 drops to ~0%).
 
-MoReNet sfrutta l'ortogonalità spettrale passiva per mantenere i ricordi intatti.
+MoReNet leverages passive spectral orthogonality to keep memories intact.
 
-| Configurazione | Task | Accuratezza Test | Note |
+| Configuration | Task | Test Accuracy | Notes |
 | :--- | :--- | :--- | :--- |
-| **MoReNet (2048 Nodi)** | Addestramento esclusivo su Task 1 (Cifre `0`, `1`) | **49.00%** | I pesi topologici scolpiscono il primo set di armoniche. |
-| **MoReNet (2048 Nodi)** | Addestramento esclusivo su Task 2 (Cifre `2`, `3`) | **51.00%** | La rete impara nuovi pattern su armoniche precedentemente non utilizzate. |
-| **MoReNet (Test di Invarianza)**| **Verifica retroattiva su Task 1** (Cifre `0`, `1`) | **57.00%** | **NESSUN CROLLO**. L'apprendimento del Task 2 ha lasciato intatti i "canyon" del Task 1, con un lieve effetto regolarizzante (aumento del 8%). |
+| **MoReNet (2048 Nodes)** | Exclusive Training on Task 1 (Digits `0`, `1`) | **49.00%** | Topological weights carve the first set of harmonics. |
+| **MoReNet (2048 Nodes)** | Exclusive Training on Task 2 (Digits `2`, `3`) | **51.00%** | The network learns new patterns on previously unused harmonics. |
+| **MoReNet (Invariance Test)**| **Retroactive verification on Task 1** (Digits `0`, `1`) | **57.00%** | **NO COLLAPSE**. Learning Task 2 left the Task 1 "canyons" intact, with a slight regularizing effect. |
 
-> 💡 **Il Potere Discriminativo (V2):** La baseline attuale (50-57%) dimostra perfettamente la sopravvivenza dei pesi, ma evidenzia la necessità di un'espansione di Bessel esatta ad alto ordine ($K > 20$) per trasformare la stabilità strutturale in un classificatore ad alta discriminazione.
+> 💡 **Discriminative Power (V2):** The current baseline (50-57%) perfectly demonstrates the structural survival of weights, but highlights the need for an exact high-order Bessel expansion ($K > 20$) to transform passive stability into a high-discrimination classifier.
 
 ---
 
 ## 🌐 5. Roadmap & Hardware Horizon
 
-Questo codice non è solo un algoritmo; è **un'astrazione software per l'hardware del futuro.**
+This code is not just an algorithm; it is **a software abstraction for the hardware of the future.**
 
-Mentre eseguiamo MoReNet approssimando onde tramite moltiplicazioni di matrici sparse su GPU convenzionali (Architettura Von Neumann), il fine ultimo di questa architettura è il **Neuromorphic & Photonic Computing**. 
-Un domani, questi calcoli non richiederanno codice PyTorch, ma saranno fisicamente eseguiti incrociando impulsi laser in cristalli fotonici o risonatori acustici, dove l'apprendimento (la modulazione dell'indice di rifrazione) avviene passivamente, alla velocità della luce, a costo energetico infinitesimale.
+While we currently run MoReNet by approximating waves via sparse matrix multiplications on conventional GPUs (Von Neumann Architecture), the ultimate goal of this architecture is **Neuromorphic & Photonic Computing**. 
+Tomorrow, these calculations will not require PyTorch code, but will be physically executed by crossing laser pulses in photonic crystals or acoustic resonators, where learning (the modulation of the refractive index) occurs passively, at the speed of light, with near-zero energy consumption.
 
-**Call to Action per i Ricercatori:**
-La community dell'Open-Source AI è invitata a contribuire per:
-- `[ ]` Scrivere un kernel C++/CUDA custom per l'espansione sparsa di Bessel (Spectral GFT bypassing).
-- `[ ]` Sperimentare topologie iniziali a blocchi (*Community Structured Graphs*) per massimizzare la focalizzazione dell'onda.
-- `[ ]` Validare il reasoning relazionale logico sul dataset bAbI.
+**Call to Action for Researchers:**
+The Open-Source AI community is invited to contribute by:
+- Writing a custom C++/CUDA kernel for sparse Bessel expansion (Spectral GFT bypassing).
+- Experimenting with block initial topologies (*Community Structured Graphs*) to maximize wave focusing.
+- Validating logical relational reasoning on the bAbI dataset.
 
-*La strada per le architetture post-connessioniste è ufficialmente aperta.*
+*The road to post-connectionist architectures is officially open.*

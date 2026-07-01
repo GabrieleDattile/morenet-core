@@ -3,34 +3,34 @@ import networkx as nx
 import sys
 import os
 
-# Aggiunge il percorso radice per importare morenet_core
+# Add root path to import morenet_core
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from morenet_core.spectral_engine import SpectralMoReNet
 
 def create_small_world_graph(n, k, p):
     """
-    Crea un grafo Small-World (Watts-Strogatz) e ne estrae gli archi come tensore PyTorch.
+    Creates a Small-World (Watts-Strogatz) graph and extracts edges as a PyTorch tensor.
     """
     G = nx.watts_strogatz_graph(n, k, p)
     edges = list(G.edges())
-    # Converte in tensore [2, num_edges]
+    # Convert to tensor [2, num_edges]
     edge_index = torch.tensor(edges, dtype=torch.long).t().contiguous()
     return edge_index
 
 def run_xor_experiment():
-    print("Inizializzazione Esperimento Zero: Continuous XOR su Grafo Small-World")
+    print("Initializing Experiment Zero: Continuous XOR on Small-World Graph")
     num_nodes = 256
     
-    # Crea grafo: 256 nodi, ogni nodo connesso a 10 vicini, probabilità di rewire 10%
+    # Create graph: 256 nodes, each connected to 10 neighbors, 10% rewire probability
     edges = create_small_world_graph(num_nodes, k=10, p=0.1)
     
     model = SpectralMoReNet(num_nodes=num_nodes, edges=edges, plasticity_threshold=0.1, alpha=0.01)
     
-    # Mappatura nodi sensori (Input)
-    # [0,0] -> Nodo 10
-    # [0,1] -> Nodo 20
-    # [1,0] -> Nodo 30
-    # [1,1] -> Nodo 40
+    # Sensor node mapping (Input)
+    # [0,0] -> Node 10
+    # [0,1] -> Node 20
+    # [1,0] -> Node 30
+    # [1,1] -> Node 40
     sensor_map = {
         (0, 0): 10,
         (0, 1): 20,
@@ -38,15 +38,15 @@ def run_xor_experiment():
         (1, 1): 40
     }
     
-    # Mappatura nodi attuatori (Target)
-    # Target 0 -> Nodo 200
-    # Target 1 -> Nodo 250
+    # Actuator node mapping (Target)
+    # Target 0 -> Node 200
+    # Target 1 -> Node 250
     target_map = {
         0: 200,
         1: 250
     }
     
-    # Dataset XOR classico
+    # Classic XOR dataset
     dataset = [
         ((0, 0), 0),
         ((0, 1), 1),
@@ -54,12 +54,12 @@ def run_xor_experiment():
         ((1, 1), 0)
     ]
     
-    print(f"Grafo inizializzato con {num_nodes} nodi e {edges.size(1)} archi.")
-    print("Avvio dell'Erosione Topologica (Training senza Backpropagation)...")
+    print(f"Graph initialized with {num_nodes} nodes and {edges.size(1)} edges.")
+    print("Starting Topological Erosion (Training without Backpropagation)...")
     
     epochs = 100
     
-    # Tracciamo il peso medio per vedere se la topologia sta evolvendo
+    # Track the mean weight to see if topology is evolving
     initial_mean_weight = model.W_values.mean().item()
     
     for epoch in range(epochs):
@@ -67,23 +67,23 @@ def run_xor_experiment():
             input_idx = sensor_map[inputs]
             target_idx = target_map[target]
             
-            # Crea impulsi (One-hot su grafo)
+            # Create impulses (One-hot on graph)
             impulse_in = torch.zeros(num_nodes, device=model.device)
             impulse_in[input_idx] = 1.0
             
             impulse_target = torch.zeros(num_nodes, device=model.device)
             impulse_target[target_idx] = 1.0
             
-            # Apprendimento
+            # Learning
             energy = model.learn_spectral_hebbian(impulse_in, impulse_target, time_steps=5)
             
         if (epoch + 1) % 20 == 0:
             current_mean = model.W_values.mean().item()
-            print(f"Epoca {epoch + 1}/{epochs} | Peso medio archi: {current_mean:.6f} | Massimo: {model.W_values.max().item():.6f}")
+            print(f"Epoch {epoch + 1}/{epochs} | Mean edge weight: {current_mean:.6f} | Maximum: {model.W_values.max().item():.6f}")
 
-    print("\nTraining Completato.")
-    print(f"Deformazione Globale del Grafo: Peso medio passato da {initial_mean_weight:.6f} a {model.W_values.mean().item():.6f}")
-    print("I 'canyon' di risonanza (associazioni input->target) sono stati scolpiti nel Laplaciano.")
+    print("\nTraining Completed.")
+    print(f"Global Graph Deformation: Mean weight changed from {initial_mean_weight:.6f} to {model.W_values.mean().item():.6f}")
+    print("Resonance 'canyons' (input->target associations) have been carved into the Laplacian.")
 
 if __name__ == "__main__":
     run_xor_experiment()
