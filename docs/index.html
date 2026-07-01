@@ -71,7 +71,7 @@
             <div class="code-block">
                 $$ \frac{\partial^2 \Psi}{\partial t^2} + c^2 \mathcal{L}\Psi = 0 $$
             </div>
-            <p>We bypass the expensive O(|V|³) eigenvalue decomposition using <strong>Chebyshev Polynomials</strong> scaled by <strong>Bessel functions of the first kind (J_n)</strong>, ensuring the semantic soliton focuses laser-sharp energy:</p>
+            <p>We bypass the expensive \( \mathcal{O}(|V|^3) \) eigenvalue decomposition using <strong>Chebyshev Polynomials</strong> scaled by <strong>Bessel functions of the first kind (\( J_n \))</strong>, ensuring the semantic soliton focuses laser-sharp energy:</p>
             <div class="code-block">
                 $$ \cos(\sqrt{\lambda} \cdot t) \approx J_0(t) + 2 \sum_{n=1}^{K} (-1)^n J_{2n}(t) T_{2n}(\hat{\mathcal{L}}) $$
             </div>

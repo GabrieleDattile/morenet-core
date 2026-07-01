@@ -199,7 +199,7 @@ h2 {
     padding: 1.5rem;
     border-radius: 12px;
     font-family: 'Fira Code', monospace;
-    color: var(--secondary);
+    color: var(--text-main);
     font-size: 1.1rem;
     margin: 1.5rem 0;
     text-align: center;
