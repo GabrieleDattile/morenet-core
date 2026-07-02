@@ -1,8 +1,10 @@
 <div align="center">
+  <img src="docs/logo.png" alt="MoReNet Logo" width="200" style="border-radius: 50%;">
   <h1>🌊 MoReNet</h1>
   <h3>Spectral Morphogenetic Resonance Networks</h3>
   <p><b>Zero-Backprop. <i>O(|E|)</i> Complexity. Zero-Catastrophic Forgetting.</b></p>
   <p><i>The Post-Connectionist Era of Artificial Intelligence begins here.</i></p>
+  <p><b>Created by Gabriele D'Attile</b></p>
   <p>🌍 <b><a href="https://GabrieleDattile.github.io/morenet-core">Visit the Interactive Website / Documentation</a></b></p>
 </div>
 
