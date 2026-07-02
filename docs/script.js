@@ -103,6 +103,25 @@ setInterval(() => {
 function animate() {
     ctx.clearRect(0, 0, width, height);
     
+    // Simulate Wave Propagation
+    for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < CONNECTION_DISTANCE) {
+                // Energy transfer between connected nodes (Simulated wave/diffusion)
+                const diff = nodes[i].targetEnergy - nodes[j].targetEnergy;
+                if (Math.abs(diff) > 0.05) {
+                    const transfer = diff * 0.05; // Wave propagation speed
+                    nodes[i].targetEnergy -= transfer;
+                    nodes[j].targetEnergy += transfer;
+                }
+            }
+        }
+    }
+
     drawEdges();
     
     nodes.forEach(node => {
@@ -113,58 +132,22 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
+// Interactive Wave Injection
+window.addEventListener('click', (e) => {
+    // Inject massive wave energy into nodes near the click
+    const mx = e.clientX;
+    const my = e.clientY;
+    
+    nodes.forEach(node => {
+        const dx = node.x - mx;
+        const dy = node.y - my;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 200) {
+            const blast = ((200 - dist) / 200) * 8.0;
+            node.targetEnergy += blast;
+        }
+    });
+});
+
 initNetwork();
 animate();
-
-// --- Interactive SVG Demo Logic ---
-const btnSensory = document.getElementById('btn-sensory');
-const btnTarget = document.getElementById('btn-target');
-const btnReset = document.getElementById('btn-reset');
-
-const pulseSensory = document.getElementById('pulse-sensory');
-const pulseTarget = document.getElementById('pulse-target');
-
-const path1 = document.getElementById('path-1');
-const path2 = document.getElementById('path-2');
-
-let sensoryActive = false;
-let targetActive = false;
-
-if(btnSensory) {
-    btnSensory.addEventListener('click', () => {
-        sensoryActive = true;
-        pulseSensory.classList.add('anim-pulse-left');
-        checkInterference();
-    });
-
-    btnTarget.addEventListener('click', () => {
-        targetActive = true;
-        pulseTarget.classList.add('anim-pulse-right');
-        checkInterference();
-    });
-
-    function checkInterference() {
-        if (sensoryActive && targetActive) {
-            setTimeout(() => {
-                // Constructive interference carves the canyon
-                path1.classList.add('canyon');
-                path2.classList.add('canyon');
-                
-                // Stop pulses after collision
-                setTimeout(() => {
-                    pulseSensory.classList.remove('anim-pulse-left');
-                    pulseTarget.classList.remove('anim-pulse-right');
-                }, 1000);
-            }, 500); // Wait for them to meet in the middle
-        }
-    }
-
-    btnReset.addEventListener('click', () => {
-        sensoryActive = false;
-        targetActive = false;
-        pulseSensory.classList.remove('anim-pulse-left');
-        pulseTarget.classList.remove('anim-pulse-right');
-        path1.classList.remove('canyon');
-        path2.classList.remove('canyon');
-    });
-}

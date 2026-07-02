@@ -206,100 +206,53 @@ h2 {
     letter-spacing: 1px;
 }
 
-/* Interactive Demo SVG Styles */
-.demo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Horizon Cards */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
 }
 
-.demo-controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.demo-controls button {
-    cursor: pointer;
-    font-family: inherit;
-    border: none;
-    font-size: 1rem;
-}
-
-.network-svg {
-    width: 100%;
-    max-width: 600px;
-    background: rgba(0,0,0,0.6);
-    border-radius: 12px;
+.feature-card {
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
-    padding: 1rem;
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s, background 0.4s;
+    text-align: center;
 }
 
-.svg-node {
-    fill: var(--bg-color);
-    stroke: var(--text-muted);
-    stroke-width: 3;
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 240, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 240, 255, 0.3);
 }
 
-.svg-node-label {
-    fill: var(--text-main);
-    font-size: 14px;
-    text-anchor: middle;
+.card-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.6));
+    animation: float-icon 4s ease-in-out infinite;
+}
+
+@keyframes float-icon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.feature-card h3 {
+    margin-bottom: 1rem;
+    color: var(--text-main);
     font-family: 'Fira Code', monospace;
+    font-size: 1.2rem;
 }
 
-.edge {
-    fill: none;
-    stroke: rgba(255, 255, 255, 0.1);
-    stroke-width: 2;
-    transition: all 0.5s ease;
-}
-
-.pulse {
-    fill: none;
-    stroke: var(--primary);
-    stroke-width: 4;
-    filter: url(#svg-glow);
-    opacity: 0;
-}
-
-.target-pulse {
-    stroke: #7000ff;
-}
-
-.anim-pulse-left {
-    animation: wave-travel-left 1.5s infinite linear;
-    opacity: 1;
-}
-
-.anim-pulse-right {
-    animation: wave-travel-right 1.5s infinite linear;
-    opacity: 1;
-}
-
-@keyframes wave-travel-left {
-    0% { transform: translateX(0); opacity: 0; }
-    10% { opacity: 1; }
-    40% { transform: translateX(150px); opacity: 1; }
-    90% { opacity: 0; }
-    100% { transform: translateX(150px); opacity: 0; }
-}
-
-@keyframes wave-travel-right {
-    0% { transform: translateX(0); opacity: 0; }
-    10% { opacity: 1; }
-    40% { transform: translateX(-150px); opacity: 1; }
-    90% { opacity: 0; }
-    100% { transform: translateX(-150px); opacity: 0; }
-}
-
-.edge.canyon {
-    stroke: var(--primary);
-    stroke-width: 6;
-    filter: url(#svg-glow);
+.feature-card p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
 }
 
 footer {

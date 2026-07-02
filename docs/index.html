@@ -86,50 +86,30 @@
             </div>
         </section>
         
-        <section id="interactive-demo" class="glass-card">
-            <h2>Interactive Schematic: Topological Erosion</h2>
-            <p>Click the buttons below to simulate wave injection. When both waves collide, the resulting constructive interference carves a permanent "semantic canyon" into the network topology.</p>
+        <section id="horizon" class="glass-card">
+            <h2>The MoReNet Horizon: Targets & Applications</h2>
+            <p>MoReNet is not just a software framework; it is an abstraction layer for the next generation of physical computing. By eliminating backpropagation, we unlock entirely new frontiers:</p>
             
-            <div class="demo-container">
-                <div class="demo-controls">
-                    <button id="btn-sensory" class="btn-glow">1. Inject Sensory Wave (Input)</button>
-                    <button id="btn-target" class="btn-glow" style="box-shadow: 0 0 20px rgba(112,0,255,0.4); color: #000; background: #fff;">2. Inject Target Wave (Actuator)</button>
-                    <button id="btn-reset" class="btn-outline">Reset Topology</button>
+            <div class="cards-grid">
+                <div class="feature-card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Photonic AI Chips</h3>
+                    <p>The ultimate target. Compiling MoReNet onto optical and acoustic resonators, where learning and wave propagation occur passively at the speed of light with near-zero thermodynamic cost.</p>
                 </div>
-                
-                <div class="demo-visuals">
-                    <svg viewBox="0 0 500 300" class="network-svg">
-                        <defs>
-                            <filter id="svg-glow">
-                                <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                        </defs>
-                        <!-- Edges -->
-                        <path id="path-top" class="edge" d="M 100 150 Q 250 50 400 150" />
-                        <path id="path-bot" class="edge" d="M 100 150 Q 250 250 400 150" />
-                        <path id="path-1" class="edge" d="M 100 150 L 250 150" />
-                        <path id="path-2" class="edge" d="M 250 150 L 400 150" />
-                        
-                        <!-- Pulse animations (hidden by default) -->
-                        <circle id="pulse-sensory" class="pulse" cx="100" cy="150" r="8" />
-                        <circle id="pulse-target" class="pulse target-pulse" cx="400" cy="150" r="8" />
-
-                        <!-- Nodes -->
-                        <circle class="svg-node" cx="100" cy="150" r="15" />
-                        <text x="100" y="190" class="svg-node-label">Sensor</text>
-                        
-                        <circle class="svg-node hidden-node" cx="250" cy="150" r="12" />
-                        <text x="250" y="180" class="svg-node-label">Latent</text>
-
-                        <circle class="svg-node" cx="400" cy="150" r="15" />
-                        <text x="400" y="190" class="svg-node-label">Actuator</text>
-                    </svg>
+                <div class="feature-card">
+                    <div class="card-icon">🧠</div>
+                    <h3>Edge Robotics</h3>
+                    <p>Enabling robots to learn continuously in the real world. New skills carve new topological canyons without overwriting or destroying previously learned motor controls.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">🔗</div>
+                    <h3>Relational Logic</h3>
+                    <p>Resolving complex logical reasoning natively through graph topology. Bypassing the quadratic bottlenecks of Transformer Attention with pure geometric wave mechanics.</p>
                 </div>
             </div>
+            <p style="text-align: center; margin-top: 3rem; color: var(--primary); font-family: 'Fira Code', monospace; letter-spacing: 1px;">
+                > INTERACTIVE CANVAS: Click anywhere on the background to inject wave energy and watch topological erosion in real-time.
+            </p>
         </section>
 
         <footer>
