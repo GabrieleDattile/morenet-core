@@ -115,3 +115,56 @@ function animate() {
 
 initNetwork();
 animate();
+
+// --- Interactive SVG Demo Logic ---
+const btnSensory = document.getElementById('btn-sensory');
+const btnTarget = document.getElementById('btn-target');
+const btnReset = document.getElementById('btn-reset');
+
+const pulseSensory = document.getElementById('pulse-sensory');
+const pulseTarget = document.getElementById('pulse-target');
+
+const path1 = document.getElementById('path-1');
+const path2 = document.getElementById('path-2');
+
+let sensoryActive = false;
+let targetActive = false;
+
+if(btnSensory) {
+    btnSensory.addEventListener('click', () => {
+        sensoryActive = true;
+        pulseSensory.classList.add('anim-pulse-left');
+        checkInterference();
+    });
+
+    btnTarget.addEventListener('click', () => {
+        targetActive = true;
+        pulseTarget.classList.add('anim-pulse-right');
+        checkInterference();
+    });
+
+    function checkInterference() {
+        if (sensoryActive && targetActive) {
+            setTimeout(() => {
+                // Constructive interference carves the canyon
+                path1.classList.add('canyon');
+                path2.classList.add('canyon');
+                
+                // Stop pulses after collision
+                setTimeout(() => {
+                    pulseSensory.classList.remove('anim-pulse-left');
+                    pulseTarget.classList.remove('anim-pulse-right');
+                }, 1000);
+            }, 500); // Wait for them to meet in the middle
+        }
+    }
+
+    btnReset.addEventListener('click', () => {
+        sensoryActive = false;
+        targetActive = false;
+        pulseSensory.classList.remove('anim-pulse-left');
+        pulseTarget.classList.remove('anim-pulse-right');
+        path1.classList.remove('canyon');
+        path2.classList.remove('canyon');
+    });
+}
