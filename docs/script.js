@@ -132,21 +132,29 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-// Interactive Wave Injection
-window.addEventListener('click', (e) => {
-    // Inject massive wave energy into nodes near the click
-    const mx = e.clientX;
-    const my = e.clientY;
-    
+// Funzione per iniettare energia
+function injectEnergy(x, y, power, radius) {
     nodes.forEach(node => {
-        const dx = node.x - mx;
-        const dy = node.y - my;
+        const dx = node.x - x;
+        const dy = node.y - y;
         const dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist < 200) {
-            const blast = ((200 - dist) / 200) * 8.0;
+        if (dist < radius) {
+            const blast = ((radius - dist) / radius) * power;
             node.targetEnergy += blast;
         }
     });
+}
+
+// Click / Touch esplosivo
+window.addEventListener('pointerdown', (e) => {
+    injectEnergy(e.clientX, e.clientY, 25.0, 250);
+});
+
+// Movimento del mouse lascia una scia
+window.addEventListener('pointermove', (e) => {
+    if (Math.random() > 0.5) { // throttled visual effect
+        injectEnergy(e.clientX, e.clientY, 2.0, 100);
+    }
 });
 
 initNetwork();
