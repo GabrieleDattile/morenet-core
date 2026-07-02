@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="docs/logo.png" alt="MoReNet Logo" width="200" style="border-radius: 50%;">
+  <img src="docs/logo.png" alt="MoReNet Logo" width="200" height="200" style="border-radius: 50%; object-fit: cover;">
   <h1>MoReNet</h1>
   <h3>Spectral Morphogenetic Resonance Networks</h3>
   <p><b>Zero-Backprop. <i>O(|E|)</i> Complexity. Zero-Catastrophic Forgetting.</b></p>
